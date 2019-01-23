@@ -1,5 +1,5 @@
-//Leemos archivos. En el arrastre viene la colección de archivos pues se pueden
-//seleccionar y arrastrar varios. Aquí sólo cogeremos el primero.
+// We read files. In the drag comes the collection of files because they can be
+// select and drag several. Here we will only take the first one.
 function leerArchivo3(files){
     if (files.length > 0){
         /*var radios = document.getElementsByName("read-as3");
@@ -24,7 +24,7 @@ function leerArchivo3(files){
                 var cadena  = evento.target.result;
                 /*if (cadena.length>50000){
                     cadena = cadena.substr(0,50000) +
-                    "\r\n..........Sólo se presentan 50000 bytes para no colapsar el navegador......";
+                    "\r\n..........50000 bytes ......";
                 } */
                 //$("#contenido-archivo3").val(cadena);
                 $("#styled").val(cadena);
@@ -55,7 +55,7 @@ function leerArchivo(){
                 var cadena  = evento.target.result;
                 /*if (cadena.length>50000){
                     cadena = cadena.substr(0,50000) +
-                    "\r\n..........Sólo se presentan 50000 bytes para no colapsar el navegador......";
+                    "\r\n..........50000 bytes ......";
                 }*/                
                 $("#styled").val(cadena);
                 contar_lineas($( "#styled" ).val());
@@ -136,7 +136,7 @@ $(document).ready(function(){
   //var ta3 = document.getElementById("contenido-archivo3");
   var ta3 = document.getElementById("styled");
   
-  //Anulamos el drag en toda la página (CH no necesita esto pero FF, OP sí)
+    // We cancel the drag on the whole page (CH does not need this but FF, OP does)
   document.body.addEventListener("dragover",
       function (evento){
           //Pero no en botones file (CH y FF)
@@ -145,7 +145,7 @@ $(document).ready(function(){
               return false;
           }
       }, true);
-  //Anulamos el  drop en toda la página
+    // We cancel the drag on the whole page
   document.body.addEventListener("drop",
       function (evento){
           //Pero no en botones file (CH y FF)
@@ -154,7 +154,7 @@ $(document).ready(function(){
               return false;
           }
       }, true);   
-  //Manejamos drop del DIV
+    // We handle DIV drop
   ta3.addEventListener("drop",
       function (evento){
           evento.stopPropagation();
@@ -189,25 +189,25 @@ $(document).ready(function(){
   });
   
   $('#boton').click(function() {
-    var msgerr = '<p class="msgIni">Debe corregir los siguientes errores:</p>';    
+    var msgerr = '<p class="msgIni">Please, correct the following errors:</p>';    
     var flagErr = 0;
     var webIds = $('#websiteid').val();
     var aleat = ''; 
         
-    //limpia errores
+    //clean errors
     $('#textWebsite').removeClass('colorWarning');
     $('#textProg').removeClass('colorWarning');
     $('#textGe').removeClass('colorWarning');  
     $('#NomFichText').removeClass('colorWarning');   
     $('.rightBox').removeClass('HTMLWarning');
     
-    //limpia caja mensajes    
+    // clean box messages   
     $('.msg').remove();
     $('.msgIni').remove();
     $('.buttonBck').remove();
     $('#aceptar').remove();
     
-    //limpia resultados    
+    // clean results  
     $('.result').remove();
     $('.enlaceResul').remove();
     if((document.getElementById('downloadFile') != null) && (typeof document.getElementById('downloadFile') !== "undefined"))
@@ -219,7 +219,7 @@ $(document).ready(function(){
     if( !$('#websiteid').val() ) {
         $('#textWebsite').addClass('colorWarning'); 
         flagErr = 1; 
-        msgerr = msgerr + '<p class="msg">*Debe rellenar al menos un websiteID</p>';  
+        msgerr = msgerr + '<p class="msg">*Insert at least one websiteID</p>';  
     }
     else{       
        webIds = webIds.split(',');
@@ -230,7 +230,7 @@ $(document).ready(function(){
           if(isNaN(parseInt(webIds[i]))){
             $('#textWebsite').addClass('colorWarning');
             flagErr = 1;    
-            msgerr = msgerr + '<p class="msg">*Todos los websiteID deben ser numericos</p>';
+            msgerr = msgerr + '<p class="msg">*Website ID must be numeric</p>';
             break;
           }
        
@@ -239,37 +239,37 @@ $(document).ready(function(){
     if( !$('#NomFich').val() ) {
           $('#NomFichText').addClass('colorWarning');
           flagErr = 1;    
-          msgerr = msgerr + '<p class="msg">*Debe rellenar el nombre</p>';   
+          msgerr = msgerr + '<p class="msg">*Insert the newsletter name</p>';   
     }       
     if( !$('#progid').val() ) {
           $('#textProg').addClass('colorWarning');
           flagErr = 1;    
-          msgerr = msgerr + '<p class="msg">*Debe rellenar el Prog ID</p>';   
+          msgerr = msgerr + '<p class="msg">*Insert the Program ID</p>';   
     }
     else if (isNaN($("#progid").val())){
           $('#textProg').addClass('colorWarning');
           flagErr = 1;    
-          msgerr = msgerr + '<p class="msg">*Prog ID debe ser numerico</p>';
+          msgerr = msgerr + '<p class="msg">*Program ID must be numeric</p>';
     }
     if( !$( "#styled" ).val() ) {
           $('.rightBox').addClass('HTMLWarning');
           flagErr = 1;  
-          msgerr = msgerr + '<p class="msg">*Debe incluir el codigo en la caja HTML</p>';                              
+          msgerr = msgerr + '<p class="msg">*Include the code in the HTML box</p>';                              
     }
     if( $('#geid').val() ) {
       if (isNaN($("#geid").val())){
           $('#textGe').addClass('colorWarning');
           flagErr = 1;    
-          msgerr = msgerr + '<p class="msg">*Elemento grafico debe ser numerico</p>';   
+          msgerr = msgerr + '<p class="msg">*Ad ID must be numeric</p>';   
       }    
     }
-    //comprobamos si hay errores
+    // check for errors
     if(flagErr == 1)
     {
        $('#fullMsg').css('height',window.innerWidth);        
        $('#fullMsg').removeClass('hidden');
        $('#msgB').append(msgerr);
-       var aceptar = '<div class="buttonBck"> <button type="button" class="accept" id="aceptar" onClick="ocultaMsg();">Aceptar</button> </div>';
+       var aceptar = '<div class="buttonBck"> <button type="button" class="accept" id="aceptar" onClick="ocultaMsg();">I agree</button> </div>';
        $('#msgB').append(aceptar);
     }
     else
@@ -290,7 +290,7 @@ $(document).ready(function(){
       else  
         images = 'http://hst.tradedoubler.com/file/'+$('#progid').val()+'/'+$('#Ruta').val()+'/';
         
-      //buscamos todos los enlaces 
+        // we search for all the links
       for(var j=0; j<webIds.length; j++)    
       { 
         textResul = '';
@@ -305,14 +305,14 @@ $(document).ready(function(){
         } 
         
         var contentImg = $( "#styled" ).val();
-        //sustituimos imagenes         
+        // we replace images        
         if(!$('#Ruta').is(':disabled')) 
         { 
           var imgChange = $( "#styled" ).val().split('src=');
           contentImg = imgChange[0];                   
           for(var i=1; i<imgChange.length; i++)
           { 
-             //va con comilla doble
+            // goes with double quote
              if(imgChange[i][0] == '"')
              {
                 //var imgsrc = imgChange[i].split('"');
@@ -330,9 +330,9 @@ $(document).ready(function(){
              contentImg = contentImg + imgChange[i]; 
           }
         }        
-        //Montamos la impresion
+        // We assemble the impression
         var contentImp =  contentImg.split('<table');
-        var contenttoTrack = contentImp[0]+"<img src='http://imp.tradedoubler.com/imp?type(inv)g("+ge+")a("+webIds[j]+")'>";
+        var contenttoTrack = contentImp[0]+"<img src='https://imp.tradedoubler.com/imp?type(inv)g("+ge+")a("+webIds[j]+")'>";
         
         for(var i=1; i<contentImp.length;i++)
         {
@@ -341,26 +341,26 @@ $(document).ready(function(){
     
         contentHref = contenttoTrack.split('href=');
         contentUpdate = contentHref[0];
-        //clickURL = 'http://clk.tradedoubler.com/click?p='+$('#progid').val()+'&a='+webIds[j]+'&g='+ge+'&epi='+EPI;
+        //clickURL = 'https://clk.tradedoubler.com/click?p='+$('#progid').val()+'&a='+webIds[j]+'&g='+ge+'&epi='+EPI;
         for(var i=1; i<contentHref.length; i++)
         {              
-           //va con comilla doble
+             // goes with double quote
            if(contentHref[i][0] == '"')
            { 
               //alert(contentHref[i]);
               var URL = contentHref[i].split('"');
-              
-              //primera iteracion == primer soporte -->Preguntamos!
+                  
+                // first iteration == first support -> We ask!
               if(j == 0)
               {
-                var msgEnlaces = '<span class="cabeceraTrackMsg">Enlaces encontrados: '+contentHref.length-1;
-                msgEnlaces = msgEnlaces +'<br> Desea hacer tracking de '+i+'/'+contentHref.length-1+':';
+                var msgEnlaces = '<span class="cabeceraTrackMsg">Links found: '+contentHref.length-1;
+                msgEnlaces = msgEnlaces +'<br> You want to track '+i+'/'+contentHref.length-1+':';
                 msgEnlaces = msgEnlaces +'<br><span class="trckEnlace">'+URL[1]+'</span>';
-                msgEnlaces = msgEnlaces +'<div class="buttonBck">  <button type="button" class="accept" id="cancel">Cancelar</button><button type="button" class="accept" id="ok">Aceptar</button> </div>';
+                msgEnlaces = msgEnlaces +'<div class="buttonBck">  <button type="button" class="accept" id="cancel">Delete</button><button type="button" class="accept" id="ok">I agree</button> </div>';
                                 
-                var c = confirm("Enlaces a trackear "+i+"/"+((contentHref.length)-1)+"\n-----------------------------\nDesea a\u00f1adir tracking a:\n "+URL[1]);            
-                if (URL[1] != '') clickURL = 'http://clk.tradedoubler.com/click?p='+$('#progid').val()+'&a='+webIds[j]+'&g='+ge+'&epi='+EPI+'&url=';
-                else clickURL = 'http://clk.tradedoubler.com/click?p='+$('#progid').val()+'&a='+webIds[j]+'&g='+ge+'&epi='+EPI;            
+                var c = confirm("Links to track "+i+"/"+((contentHref.length)-1)+"\n-----------------------------\nYou want to add tracking to:\n "+URL[1]);            
+                if (URL[1] != '') clickURL = 'https://clk.tradedoubler.com/click?p='+$('#progid').val()+'&a='+webIds[j]+'&g='+ge+'&epi='+EPI+'&url=';
+                else clickURL = 'https://clk.tradedoubler.com/click?p='+$('#progid').val()+'&a='+webIds[j]+'&g='+ge+'&epi='+EPI;            
                 if (c == true)
                 {
                     contentHref[i] = contentHref[i].replace('"', 'href="'+clickURL);
@@ -373,7 +373,7 @@ $(document).ready(function(){
                     posiciones[posiciones.length] = 0;
                 }
               }
-              //resto soportes repetimos como para el primero
+
               else
               {
                 if (posiciones[i-1] == 1)
@@ -385,7 +385,7 @@ $(document).ready(function(){
                 }               
               }                
            }
-           //va con comilla simple
+            // goes with single quote
            else if(contentHref[i][0] == "'")
            { 
               //alert('comilla simple');
@@ -394,8 +394,8 @@ $(document).ready(function(){
               if(j == 0)
               {
                 var c = confirm("Desea a\u00f1adir tracking a:\n "+URL[1]);
-                if (URL[1] != '') clickURL = 'http://clk.tradedoubler.com/click?p='+$('#progid').val()+'&a='+webIds[j]+'&g='+ge+'&epi='+EPI+'&url=';
-                else clickURL = 'http://clk.tradedoubler.com/click?p='+$('#progid').val()+'&a='+webIds[j]+'&g='+ge+'&epi='+EPI;
+                if (URL[1] != '') clickURL = 'https://clk.tradedoubler.com/click?p='+$('#progid').val()+'&a='+webIds[j]+'&g='+ge+'&epi='+EPI+'&url=';
+                else clickURL = 'https://clk.tradedoubler.com/click?p='+$('#progid').val()+'&a='+webIds[j]+'&g='+ge+'&epi='+EPI;
                 if (c == true)
                 {
                    contentHref[i] = contentHref[i].replace("'", "href='"+clickURL);
@@ -408,7 +408,7 @@ $(document).ready(function(){
                     posiciones[posiciones.length] = 0;
                 }
               }
-              //resto soportes repetimos como para el primero
+
               else
               {
                 if (posiciones[i-1] == 1)
@@ -423,15 +423,15 @@ $(document).ready(function(){
            }
            
            contentUpdate = contentUpdate + contentHref[i];         
-        }//bucle for newsletter
+        }//loop for newsletter
         
         //guardamos resultados 
         parametros[j] = contentUpdate;    
-        textResul = '<div class="result hidden" id="'+j+'"><button type="submit" class="botonResul" id="previa_'+webIds[j]+'" onClick="activaPrevia(\''+webIds[j]+'\')">Previsualizar</button><button type="submit" class="botonResul" id="showCode_'+webIds[j]+'" onClick="activaCodigo(\''+webIds[j]+'\')">Ver codigo</button><div class="result hidden" id="'+webIds[j]+'">'+contentUpdate+'</div><div class="result hidden" id="'+webIds[j]+'Codigo"><textarea class="boxarea" style="resize:none">'+contentUpdate+'</textarea></div></div>'; 
+        textResul = '<div class="result hidden" id="'+j+'"><button type="submit" class="botonResul" id="previa_'+webIds[j]+'" onClick="activaPrevia(\''+webIds[j]+'\')">Preview</button><button type="submit" class="botonResul" id="showCode_'+webIds[j]+'" onClick="activaCodigo(\''+webIds[j]+'\')">See code</button><div class="result hidden" id="'+webIds[j]+'">'+contentUpdate+'</div><div class="result hidden" id="'+webIds[j]+'Codigo"><textarea class="boxarea" style="resize:none">'+contentUpdate+'</textarea></div></div>'; 
         $("#resultIndiv").append(textResul);   
         $("#cabeceraResul").append('<span class="enlaceResul" id="_'+webIds[j]+'" onClick="activa(\''+webIds[j]+'\',\''+j+'\')" >Ver '+webIds[j]+'&nbsp;</span>');
         
-      }//bucle for soportes
+      }//loop for supports
       $("#resultados").removeClass('hidden'); 
     }//else   
       
