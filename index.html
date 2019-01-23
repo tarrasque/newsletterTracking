@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>    
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/library.js"></script>    
+  </head>
+  <body>  
+    <div>
+      <img src="img/logo.png">
+    </div>
+    <div id="stylized" class="myform">   
+      <h1>Newsletter Tracking</h1> 
+      <p>Track it!</p>
+      <span>NOTE: * mandatory fields</span><br><br> 
+      <div id="resultados" class="hidden">
+        <p class="tResul">Resultados</p>
+        <div id="cabeceraResul"></div>
+        <div id="resultIndiv"></div>
+      </div>   
+      <div class="leftBox"> 
+        <label id="ficherosAyuda">Arrastra un fichero a la caja
+         <br>o buscalo:</label>
+        <input name="userfile" type="file" id="boton-file2"/><br>       
+        <!--<input type="button" value="Cargar" id="botonCargar" class="botonLoad" />-->  
+        <div style="clear:both"></div>  
+        <br>
+        <label id="textWebsite">Website ID *<span class="small"> (i.e. 1111,2222,333) </span></label><input type="text" name="datepicker" id="websiteid" size="12" />
+        <div style="clear:both"></div>      
+        <label id="textProg">Prog ID *<span class="small"></span></label><input type="text" name="datepicker" id="progid" size="12" />
+        <div style="clear:both"></div>
+        <label id="NomFichText">Nombre *<span class="small"></span></label><input type="text" name="datepicker" id="NomFich" size="12" />
+        <div style="clear:both"></div>
+        <label id="textGe">Ad ID<span class="small"></span></label><input type="text" name="datepicker" id="geid" size="12" />
+        <div style="clear:both"></div> 
+        <label id="textEPI">EPI<span class="small"></span></label><input type="text" name="datepicker" id="EPI" size="12" />
+        <div style="clear:both"></div>   
+        <label id="textImg" class="txtCIMG">Activar imagenes</label><input type="checkbox" name="img" id="CheckImg"/>
+        <div style="clear:both"></div>  
+        <label id="textRuta">Ruta imagenes<span class="small"></span></label><input type="text" name="datepicker" id="Ruta" size="12"  disabled/>
+        <div style="clear:both"></div>         
+        <div class="spacer"></div>  
+        <button type="submit" id="boton">Track now!</button>
+        <div class="spacer"></div>     
+      </div>     
+     <div class="rightBox">
+      <div class="cabecera">
+        HTML
+      </div>
+      <div class="editor">
+        <div class="lateralBox" id="lineBox">
+        </div>
+        <textarea id="styled" style="resize:none" name="codeBox"></textarea>
+      </div>
+     </div>
+     <div style="clear:both"></div>  
+    </div>       
+    <div>
+      <img src="img/footer.gif" width="100%">
+    </div>
+    <div id="fullMsg" class="fullMsg hidden">
+      <div id="msgB" class="msgBox">
+       </div>
+    </div>
+    <div id="MsgTrck" class="fullMsg hidden">
+    </div>
+    <div id="loadingBoxFull" class="loading hidden">
+      <div id="loadingBox" class="loadImg">
+        <img src="img/cargando.gif">
+      </div>  
+    </div>  
+  </body>
+</html> 
