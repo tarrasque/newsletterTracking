@@ -1,6 +1,6 @@
 <?php
 
-//eliminamos directorios anteriores al dia en el que estamos
+//Delete the old directory
 $directorio = opendir(".");
 while($archivo = readdir($directorio))
 {    
@@ -31,15 +31,15 @@ if (isset($_POST['nombre']) && !empty($_POST['nombre'])) {$nombre = $_POST['nomb
 if (isset($_POST['soportes']) && !empty($_POST['soportes'])) {$soportes = $_POST['soportes'];}else{$soportes='';}
 if (isset($_POST['exist']) && !empty($_POST['exist'])) {$exist = $_POST['exist'];}else{$exist='';} 
 
-//separamos el nombre de su extension en caso de existir
+//Separated name and extension
 $nombres = explode(".", $nombre);
 $soportes = explode(",",$soportes); 
 
-$nombreCarpeta = date('Ymd').'-'.rand(0,100000);
+$nombreCarpeta = 'downloads/'. date('Ymd').'-'.rand(0,100000);
 
 if($numero>0)
 {
-  //es la primera ejecucion, sin recargar la pagina
+  //upload page for the first execution
   if($exist == '')
   {
     $oldmask = umask(0);
@@ -61,7 +61,7 @@ if($numero>0)
   for($i=0; $i<$numero; $i++)
   { 
     if ($res === TRUE) {
-        //$zip->addFromString('test.html', 'el contenido del fichero va aquí');
+        //$zip->addFromString('test.html', 'Put content here');
         $contenido = $_POST["$i"];
         $zip->addFromString("$nombres[0]_$soportes[$i].html", "$contenido");        
         
@@ -70,7 +70,7 @@ if($numero>0)
   if ($res === TRUE) {
     
     $zip->close();
-    echo '<a href='.$filename.' id="downloadFile" data="'.$nombreCarpeta.'">Descarga </a>';
+    echo '<a href='.$filename.' id="downloadFile" data="'.$nombreCarpeta.'">DOWNLOAD ZIP </a>';
     
   } else {
       echo 'failed';
@@ -79,4 +79,3 @@ if($numero>0)
 } 
 
 ?>
- 
